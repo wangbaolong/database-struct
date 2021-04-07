@@ -176,7 +176,7 @@ func (t *mysql) getGoType(dbType string) string {
 var typeMysqlDic = map[string]string{
 	"smallint":            "int16",
 	"smallint unsigned":   "uint16",
-	"int":                 "int",
+	"int":                 "int32",
 	"int unsigned":        "uint",
 	"bigint":              "int64",
 	"bigint unsigned":     "uint64",
@@ -210,7 +210,7 @@ var typeMysqlMatch = [][]string{
 	{`^(smallint)[(]\d+[)] unsigned`, "uint16"},
 	{`^(smallint)[(]\d+[)]`, "int16"},
 	{`^(int)[(]\d+[)] unsigned`, "uint"},
-	{`^(int)[(]\d+[)]`, "int"},
+	{`^(int)[(]\d+[)]`, "int32"},
 	{`^(bigint)[(]\d+[)] unsigned`, "uint64"},
 	{`^(bigint)[(]\d+[)]`, "int64"},
 	{`^(char)[(]\d+[)]`, "string"},

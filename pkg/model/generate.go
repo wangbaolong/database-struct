@@ -12,7 +12,6 @@ import (
 
 	"github.com/dave/jennifer/jen"
 	"github.com/markbates/pkger"
-	_ "github.com/yinheli/database-struct/pkg/static"
 	"gopkg.in/flosch/pongo2.v3"
 )
 
@@ -245,11 +244,6 @@ func goType(options *Options, field *Field, c *jen.Statement) *jen.Statement {
 	case "string":
 		return c.String()
 	case "time.Time":
-		if !options.GormV1 {
-			if strings.EqualFold(field.Field, "deleted_at") {
-				return c.Qual("gorm.io/gorm", "DeletedAt")
-			}
-		}
 		return c.Qual("time", "Time")
 	case "float32":
 		return c.Float32()
